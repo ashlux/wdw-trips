@@ -1,0 +1,39 @@
+<mockup version="1.0" skin="sketch" measuredW="825" measuredH="514">
+  <controls>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="15" y="4" w="800" h="500" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="30" y="87" w="-1" h="-1" measuredW="352" measuredH="56" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WDW%20Trip%20Reports</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::LinkBar" x="593" y="110" w="-1" h="-1" measuredW="207" measuredH="23" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>My%20Profile%2C%20Settings%2C%20Logout</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="679" y="87" w="-1" h="-1" measuredW="121" measuredH="23" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>ashlux%20%28Ashley%20Lux%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::DateChooser" x="330" y="195" w="-1" h="-1" measuredW="102" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>up</state>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::FieldSet" x="195" y="148" w="439" h="252" measuredW="200" measuredH="170" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>New%20trip</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::DateChooser" x="374" y="315" w="-1" h="-1" measuredW="102" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%20%20/%20%20/%20%20%20%20</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

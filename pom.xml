@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ashlux.wdw-trips</groupId>
+  <artifactId>wdw-trips</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <name>WDW Trips</name>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>wdw-trips-webapp</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <target>1.6</target>
+          <source>1.6</source>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>5.9</version>
+      <classifier>jdk15</classifier>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+  <repositories>
+    <repository>
+      <id>ashlux-repository</id>
+      <url>http://www.ashlux.com/maven2/repo</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>ashlux-snapshot-repository</id>
+      <url>http://www.ashlux.com/maven2/snapshotRepo</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>guice-maven</id>
+      <name>guice maven</name>
+      <url>http://guice-maven.googlecode.com/svn/trunk</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>ashlux-ftp-repository</id>
+      <url>ftp://www.ashlux.com/www/www/maven2/repo</url>
+    </repository>
+    <snapshotRepository>
+      <id>ashlux-ftp-snapshotrepo</id>
+      <url>ftp://www.ashlux.com/www/www/maven2/snapshotRepo</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>
