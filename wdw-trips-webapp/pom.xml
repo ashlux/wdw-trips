@@ -28,7 +28,7 @@
         <configuration>
           <gwtHome>/Users/ashlux/java/gwt</gwtHome>
           <gwtVersion>${gwt.version}</gwtVersion>
-         </configuration>
+        </configuration>
         <executions>
           <execution>
             <phase>compile</phase>
@@ -37,7 +37,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>                                            
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -47,6 +47,13 @@
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>com.ashlux.wdw-trips</groupId>
+      <artifactId>wdw-trips-jpa</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
