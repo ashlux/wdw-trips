@@ -11,6 +11,7 @@
 
   <modules>
     <module>wdw-trips-webapp</module>
+    <module>wdw-trips-jpa</module>
   </modules>
 
   <build>

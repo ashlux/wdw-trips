@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>wdw-trips</artifactId>
+    <groupId>com.ashlux.wdw-trips</groupId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+
+  <groupId>com.ashlux.wdw-trips</groupId>
+  <artifactId>wdw-trips-jpa</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <name>WDW Trips JPA</name>
+  <packaging>jar</packaging>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.datanucleus</groupId>
+        <artifactId>maven-datanucleus-plugin</artifactId>
+        <version>2.0.0.m1</version>
+        <configuration>
+          <mappingIncludes>**/*.jdo, **/*.class</mappingIncludes>
+          <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
+          <verbose>true</verbose>
+          <enhancerName>ASM</enhancerName>
+          <props>${basedir}/datanucleus.properties</props>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>enhance</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>DataNucleus_Repos</id>
+      <name>DataNucleus Repository</name>
+      <url>http://www.datanucleus.org/downloads/maven</url>
+      <layout>legacy</layout>
+    </repository>
+    <repository>
+      <id>DataNucleus_Repos2</id>
+      <name>DataNucleus Repository</name>
+      <url>http://www.datanucleus.org/downloads/maven2</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>DataNucleus_2</id>
+      <url>http://www.datanucleus.org/downloads/maven2/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>
