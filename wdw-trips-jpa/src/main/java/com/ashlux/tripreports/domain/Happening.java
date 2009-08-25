@@ -5,6 +5,7 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import java.util.Date;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Happening
@@ -19,6 +20,9 @@ public class Happening
 
     @Persistent
     private String details;
+
+    @Persistent
+    private Date date;
 
     public Long getId()
     {
@@ -43,5 +47,15 @@ public class Happening
     public void setDetails( String details )
     {
         this.details = details;
+    }
+
+    public Date getDate()
+    {
+        return date;
+    }
+
+    public void setDate( Date date )
+    {
+        this.date = date;
     }
 }
