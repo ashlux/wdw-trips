@@ -1,19 +1,20 @@
 package com.ashlux.tripreports.domain;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
-@Entity
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Happening
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /** @noinspection UnusedDeclaration*/
+    @PrimaryKey
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Long id;
 
-    @Basic
+    @Persistent
     private String details;
 
     public Long getId()

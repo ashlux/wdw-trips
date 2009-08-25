@@ -1,11 +1,13 @@
 package com.ashlux.tripreports.tripreports.server;
 
 import com.ashlux.tripreports.dao.jpa.EMF;
+import com.ashlux.tripreports.dao.jpa.PMF;
 import com.ashlux.tripreports.domain.Happening;
 import com.ashlux.tripreports.tripreports.client.TripReportsService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import javax.persistence.EntityManager;
+import javax.jdo.PersistenceManager;
 
 public class TripReportsServiceImpl
     extends RemoteServiceServlet
@@ -13,11 +15,18 @@ public class TripReportsServiceImpl
 {
     public String getMessage( String msg )
     {
-        EntityManager entityManager = EMF.get().createEntityManager();
+        PersistenceManager persistenceManager = PMF.get().getPersistenceManager();
         Happening happening = new Happening();
         happening.setDetails( "BLAH BLAH" );
-        entityManager.persist( happening );
-        entityManager.close();
+        persistenceManager.makePersistent( happening );
+        persistenceManager.close();
+
+
+//        EntityManager entityManager = EMF.get().createEntityManager();
+//        Happening happening = new Happening();
+//        happening.setDetails( "BLAH BLAH" );
+//        entityManager.persist( happening );
+//        entityManager.close();
 
         return "Client said: \"" + msg + "\"<br>Server answered: \"Hi!\"";
     }

@@ -52,6 +52,21 @@
       <artifactId>wdw-trips-jpa</artifactId>
       <version>0.1-SNAPSHOT</version>
       <scope>compile</scope>
+      <exclusions>
+        <!-- Use GAE version instead -->
+        <exclusion>
+          <groupId>org.datanucleus</groupId>
+          <artifactId>datanucleus-core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.datanucleus</groupId>
+      <artifactId>datanucleus-core</artifactId>
+      <version>1.1.4</version>
+      <scope>compile</scope>
+      <classifier>gae</classifier>
     </dependency>
 
     <dependency>
@@ -102,20 +117,8 @@
     <dependency>
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-1.0-sdk</artifactId>
-      <version>1.2.1</version>
+      <version>1.2.2</version>
       <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.appengine.orm</groupId>
-      <artifactId>datanucleus-appengine</artifactId>
-      <version>1.0.1</version>
-      <scope>compile</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.transaction</groupId>
-          <artifactId>transaction-api</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <artifactId>standard</artifactId>
@@ -135,7 +138,7 @@
       <groupId>org.apache.geronimo.specs</groupId>
       <artifactId>geronimo-el_1.0_spec</artifactId>
       <version>1.0.1</version>
-      <scope>compile</scope>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.geronimo.specs</groupId>
@@ -164,40 +167,9 @@
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>datanucleus-appengine</artifactId>
-      <version>1.0.0.final</version>
-      <scope>provided</scope>
+      <version>1.0.2.final</version>
+      <scope>compile</scope>
     </dependency>
-
-    <!--<dependency>-->
-    <!--<groupId>org.slf4j</groupId>-->
-    <!--<artifactId>slf4j-log4j12</artifactId>-->
-    <!--<version>1.5.5</version>-->
-    <!--<scope>compile</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.google.code.guice</groupId>-->
-    <!--<artifactId>guice</artifactId>-->
-    <!--<version>2.0.1</version>-->
-    <!--<scope>compile</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.google.code.guice</groupId>-->
-    <!--<artifactId>guice-struts</artifactId>-->
-    <!--<version>2.0.1</version>-->
-    <!--<scope>compile</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.google.code.guice</groupId>-->
-    <!--<artifactId>guice-servlet</artifactId>-->
-    <!--<version>2.0.1</version>-->
-    <!--<scope>compile</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.jteigen.scalatest</groupId>-->
-    <!--<artifactId>junit4runner</artifactId>-->
-    <!--<version>1.0</version>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
   </dependencies>
 
 </project>

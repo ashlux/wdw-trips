@@ -5,8 +5,8 @@ import javax.persistence.Persistence;
 
 public final class EMF
 {
-    private static final EntityManagerFactory emfInstance =
-        Persistence.createEntityManagerFactory( "transactions-optional" );
+    private static final EntityManagerFactory INSTANCE =
+        Persistence.createEntityManagerFactory( "helloorm" );
 
     private EMF()
     {
@@ -14,6 +14,6 @@ public final class EMF
 
     public static EntityManagerFactory get()
     {
-        return emfInstance;
+        return INSTANCE;
     }
 }

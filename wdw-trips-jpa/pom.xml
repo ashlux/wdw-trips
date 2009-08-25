@@ -20,17 +20,14 @@
       <plugin>
         <groupId>org.datanucleus</groupId>
         <artifactId>maven-datanucleus-plugin</artifactId>
-        <version>1.1.3</version>
+        <version>1.1.2</version>
         <configuration>
-          <mappingIncludes>**/*.jdo, **/*.class</mappingIncludes>
-          <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
+          <mappingIncludes>**/*.class</mappingIncludes>
           <verbose>true</verbose>
-          <enhancerName>ASM</enhancerName>
-          <props>${basedir}/datanucleus.properties</props>
         </configuration>
         <executions>
           <execution>
-            <phase>compile</phase>
+            <phase>process-classes</phase>
             <goals>
               <goal>enhance</goal>
             </goals>
@@ -40,40 +37,27 @@
           <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>1.1.5</version>
-            <exclusions>
-              <exclusion>
-                <groupId>javax.transaction</groupId>
-                <artifactId>transaction-api</artifactId>
-              </exclusion>
-            </exclusions>
+            <version>1.1.4</version>
+          </dependency>
+          <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-jpa</artifactId>
+            <version>1.1.4</version>
           </dependency>
           <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>1.1.5</version>
-            <exclusions>
-              <exclusion>
-                <groupId>javax.transaction</groupId>
-                <artifactId>transaction-api</artifactId>
-              </exclusion>
-            </exclusions>
+            <version>1.1.4</version>
+          </dependency>
+          <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-rdbms</artifactId>
+            <version>1.1.4</version>
           </dependency>
           <dependency>
             <groupId>javax.jdo</groupId>
             <artifactId>jdo2-api</artifactId>
             <version>2.3-eb</version>
-            <exclusions>
-              <exclusion>
-                <groupId>javax.transaction</groupId>
-                <artifactId>transaction-api</artifactId>
-              </exclusion>
-            </exclusions>
-          </dependency>
-          <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>1.1</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -84,37 +68,14 @@
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>datanucleus-core</artifactId>
-      <version>1.1.5</version>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.transaction</groupId>
-          <artifactId>transaction-api</artifactId>
-        </exclusion>
-      </exclusions>
-      <scope>provided</scope>
+      <version>1.1.4</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>datanucleus-jpa</artifactId>
-      <version>1.1.5</version>
-    </dependency>
-    <dependency>
-      <groupId>org.datanucleus</groupId>
-      <artifactId>datanucleus-rdbms</artifactId>
-      <version>1.1.5</version>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.transaction</groupId>
-          <artifactId>transaction-api</artifactId>
-        </exclusion>
-      </exclusions>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.transaction</groupId>
-      <artifactId>jta</artifactId>
-      <version>1.1</version>
-      <scope>provided</scope>
+      <version>1.1.4</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>javax.persistence</groupId>
@@ -125,24 +86,12 @@
     <dependency>
       <groupId>javax.jdo</groupId>
       <artifactId>jdo2-api</artifactId>
-      <version>2.3-eb</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.transaction</groupId>
-          <artifactId>transaction-api</artifactId>
-        </exclusion>
-      </exclusions>
+      <version>2.3-ea</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
   <repositories>
-    <repository>
-      <id>DataNucleus_Repos</id>
-      <name>DataNucleus Repository</name>
-      <url>http://www.datanucleus.org/downloads/maven</url>
-      <layout>legacy</layout>
-    </repository>
     <repository>
       <id>DataNucleus_Repos2</id>
       <name>DataNucleus Repository</name>
