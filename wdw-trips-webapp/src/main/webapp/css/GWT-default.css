@@ -155,6 +155,12 @@ a, a:visited, a:hover {
 .gwt-Label {
 }
 
+.wdw-LogoText {
+    font-size:xx-large;
+    font-weight:bolder;
+    font-style:italic;    
+}
+
 /**
  * Applied to list boxes.
  */

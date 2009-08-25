@@ -44,6 +44,7 @@ public class TripReports
     private Widget createHeaderWidget()
     {
         Label logoLabel = new Label( "WDW Trip Reports" );
+        logoLabel.setStyleName( "wdw-LogoText" );
         logoLabel.setWidth( "100%" );
         logoLabel.setHorizontalAlignment( Label.ALIGN_LEFT );
 
