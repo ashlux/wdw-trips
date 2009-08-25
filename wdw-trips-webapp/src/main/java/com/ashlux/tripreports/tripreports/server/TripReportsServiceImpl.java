@@ -7,17 +7,23 @@ import com.ashlux.tripreports.tripreports.client.TripReportsService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Date;
 
 public class TripReportsServiceImpl
     extends RemoteServiceServlet
     implements TripReportsService
 {
+    @SuppressWarnings({"unchecked"})
     public List<HappeningsDTO> getPreviousHappenings()
     {
         PersistenceManager persistenceManager = PMF.get().getPersistenceManager();
-        List<Happening> happenings = (List<Happening>) persistenceManager.newQuery( Happening.class ).execute();
+        Query recentHappeningsQuery = persistenceManager.newQuery( Happening.class );
+        recentHappeningsQuery.setRange( 0, 5 );
+        recentHappeningsQuery.setOrdering( "date DESC" );
+        List<Happening> happenings = (List<Happening>) recentHappeningsQuery.execute();
 
         List<HappeningsDTO> happeningsDTOs = new LinkedList<HappeningsDTO>();
         for ( Happening happening : happenings )
@@ -25,6 +31,7 @@ public class TripReportsServiceImpl
             HappeningsDTO happeningsDTO = new HappeningsDTO();
             happeningsDTO.setName( happening.getName() );
             happeningsDTO.setDetails( happening.getDetails() );
+            happeningsDTO.setDate( happening.getDate() );
             happeningsDTOs.add( happeningsDTO );
         }
 
@@ -38,12 +45,14 @@ public class TripReportsServiceImpl
         Happening happening = new Happening();
         happening.setName( name );
         happening.setDetails( message );
+        happening.setDate( new Date() );
         persistenceManager.makePersistent( happening );
         persistenceManager.close();
 
         HappeningsDTO happeningsDTO = new HappeningsDTO();
         happeningsDTO.setName( happening.getName() );
         happeningsDTO.setDetails( happening.getDetails() );
+        happeningsDTO.setDate( happening.getDate() );
         return happeningsDTO;
     }
 }

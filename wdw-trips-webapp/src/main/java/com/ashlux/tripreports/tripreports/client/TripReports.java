@@ -1,21 +1,21 @@
 package com.ashlux.tripreports.tripreports.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
 
 import java.util.List;
 
@@ -30,6 +30,7 @@ public class TripReports
 
     public void onModuleLoad()
     {
+        @SuppressWarnings({"GwtToHtmlReferences"})
         RootPanel rootPanel = RootPanel.get( "slot" );
         rootPanel.setWidth( "100%" );
         rootPanel.add( createHeaderWidget() );
@@ -37,7 +38,7 @@ public class TripReports
         rootPanel.add( previousHappeningsVerticalPanel );
 
         // get most recent happenings
-        TripReportsService.App.getInstance().getPreviousHappenings( new PreviousHappeningsAsyncCallback() );
+        TripReportsService.App.getInstance().getPreviousHappenings( new PreviousHappeningsAsyncCallback(previousHappeningsVerticalPanel) );
     }
 
     private Widget createHeaderWidget()
@@ -111,13 +112,20 @@ public class TripReports
         {
             TripReportsService.App.getInstance().addHappening( whoAreYouTextBox.getText(),
                                                                whatsHappeningTextArea.getText(),
-                                                               new AddHappeningAsyncCallback() );
+                                                               new AddHappeningAsyncCallback(previousHappeningsVerticalPanel) );
         }
     }
 
     public class AddHappeningAsyncCallback
         implements AsyncCallback<HappeningsDTO>
     {
+        Panel panel;
+
+        public AddHappeningAsyncCallback( Panel panel )
+        {
+            this.panel = panel;
+        }
+
 
         public void onFailure( Throwable throwable )
         {
@@ -126,15 +134,20 @@ public class TripReports
 
         public void onSuccess( HappeningsDTO happeningsDTO )
         {
-            previousHappeningsVerticalPanel.add( new Label( "Posted by " + happeningsDTO.getName() ) );
-            previousHappeningsVerticalPanel.add( new Label( happeningsDTO.getDetails() ) );
-            previousHappeningsVerticalPanel.add( new Label( "---------------------------------------------------" ) );
+            addPreviousPosting( happeningsDTO, panel );
         }
     }
 
     public class PreviousHappeningsAsyncCallback
         implements AsyncCallback<List<HappeningsDTO>>
     {
+        Panel panel;
+
+        public PreviousHappeningsAsyncCallback( Panel panel )
+        {
+            this.panel = panel;
+        }
+
         public void onFailure( Throwable throwable )
         {
             // ignore failures for now
@@ -144,11 +157,16 @@ public class TripReports
         {
             for ( HappeningsDTO happeningsDTO : happeningsDTOs )
             {
-                previousHappeningsVerticalPanel.add( new Label( "Posted by " + happeningsDTO.getName() ) );
-                previousHappeningsVerticalPanel.add( new Label( happeningsDTO.getDetails() ) );
-                previousHappeningsVerticalPanel.add(
-                    new Label( "---------------------------------------------------" ) );
+                addPreviousPosting( happeningsDTO, panel );
             }
         }
+    }
+
+    private void addPreviousPosting( HappeningsDTO happeningsDTO, Panel panel )
+    {
+        panel.add(
+            new Label( "Posted by " + happeningsDTO.getName() + " on " + happeningsDTO.getDate() ) );
+        panel.add( new Label( happeningsDTO.getDetails() ) );
+        panel.add( new Label( "---------------------------------------------------" ) );
     }
 }
