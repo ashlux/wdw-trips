@@ -1,33 +1,49 @@
 package com.ashlux.tripreports.tripreports.server;
 
-import com.ashlux.tripreports.dao.jpa.EMF;
 import com.ashlux.tripreports.dao.jpa.PMF;
 import com.ashlux.tripreports.domain.Happening;
+import com.ashlux.tripreports.tripreports.client.HappeningsDTO;
 import com.ashlux.tripreports.tripreports.client.TripReportsService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import javax.persistence.EntityManager;
 import javax.jdo.PersistenceManager;
+import java.util.LinkedList;
+import java.util.List;
 
 public class TripReportsServiceImpl
     extends RemoteServiceServlet
     implements TripReportsService
 {
-    public String getMessage( String msg )
+    public List<HappeningsDTO> getPreviousHappenings()
+    {
+        PersistenceManager persistenceManager = PMF.get().getPersistenceManager();
+        List<Happening> happenings = (List<Happening>) persistenceManager.newQuery( Happening.class ).execute();
+
+        List<HappeningsDTO> happeningsDTOs = new LinkedList<HappeningsDTO>();
+        for ( Happening happening : happenings )
+        {
+            HappeningsDTO happeningsDTO = new HappeningsDTO();
+            happeningsDTO.setName( happening.getName() );
+            happeningsDTO.setDetails( happening.getDetails() );
+            happeningsDTOs.add( happeningsDTO );
+        }
+
+        persistenceManager.close();        
+        return happeningsDTOs;
+    }
+
+    public HappeningsDTO addHappening( String name, String message )
     {
         PersistenceManager persistenceManager = PMF.get().getPersistenceManager();
         Happening happening = new Happening();
-        happening.setDetails( "BLAH BLAH" );
+        happening.setName( name );
+        happening.setDetails( message );
         persistenceManager.makePersistent( happening );
         persistenceManager.close();
 
-
-//        EntityManager entityManager = EMF.get().createEntityManager();
-//        Happening happening = new Happening();
-//        happening.setDetails( "BLAH BLAH" );
-//        entityManager.persist( happening );
-//        entityManager.close();
-
-        return "Client said: \"" + msg + "\"<br>Server answered: \"Hi!\"";
+        HappeningsDTO happeningsDTO = new HappeningsDTO();
+        happeningsDTO.setName( happening.getName() );
+        happeningsDTO.setDetails( happening.getDetails() );
+        return happeningsDTO;
     }
 }

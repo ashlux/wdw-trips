@@ -3,17 +3,17 @@ package com.ashlux.tripreports.tripreports.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.rpc.RemoteService;
+import com.ashlux.tripreports.domain.Happening;
+
+import java.util.List;
 
 public interface TripReportsService
     extends RemoteService
 {
-    // Sample interface method of remote interface
-    String getMessage( String msg );
+    HappeningsDTO addHappening( String name, String message );
 
-    /**
-     * Utility/Convenience class.
-     * Use TripReportsService.App.getInstance () to access static instance of TripReportsServiceAsync
-     */
+    List<HappeningsDTO> getPreviousHappenings();
+
     public static class App
     {
         private static TripReportsServiceAsync app = null;

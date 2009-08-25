@@ -15,11 +15,24 @@ public class Happening
     private Long id;
 
     @Persistent
+    private String name;
+
+    @Persistent
     private String details;
 
     public Long getId()
     {
         return id;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName( String name )
+    {
+        this.name = name;
     }
 
     public String getDetails()
