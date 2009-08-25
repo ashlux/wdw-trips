@@ -10,7 +10,7 @@ body {
   border: 0px;
   padding: 0px;
   overflow: visible;
-  background: #E1E7F2 url(images/bg_gradient.gif) repeat-x;
+  background: #E1E7F2 url(../images/bg_gradient.gif) repeat-x;
   direction: ltr;
 }
 
@@ -54,7 +54,7 @@ a, a:visited, a:hover {
 }
 
 .gwt-DialogBox .Caption {
-  background: #e3e8f3 url(images/bg_headergradient.gif) repeat-x;
+  background: #e3e8f3 url(../images/bg_headergradient.gif) repeat-x;
   padding: 4px 4px 4px 8px;
   cursor: default;
   border-bottom: 1px solid #bbbbbb;
@@ -178,7 +178,7 @@ a, a:visited, a:hover {
 }
 
 .gwt-MenuBar-horizontal {
-  background: #e3e8f3 url(images/bg_headergradient.gif) repeat-x;
+  background: #e3e8f3 url(../images/bg_headergradient.gif) repeat-x;
 }
 
 .gwt-MenuBar-horizontal .gwt-MenuItem {
@@ -302,7 +302,7 @@ a, a:visited, a:hover {
 }
 
 .gwt-RichTextToolbar {
-  background: #e3e8f3 url(images/bg_headergradient.gif) repeat-x;
+  background: #e3e8f3 url(../images/bg_headergradient.gif) repeat-x;
   border-bottom: 1px solid #BBBBBB;
   padding: 3px;
   margin: 0px;
@@ -376,7 +376,7 @@ a, a:visited, a:hover {
 .gwt-StackPanel .gwt-StackPanelItem {
   font-weight: bold;
   font-size: 1.3em;
-  background: #e3e8f3 url(images/bg_headergradient.gif) repeat-x;
+  background: #e3e8f3 url(../images/bg_headergradient.gif) repeat-x;
   color: #666666;
   border: 1px solid #e3e8f3;
   padding: 5px 3px 5px 10px;
@@ -404,7 +404,7 @@ a, a:visited, a:hover {
   background: #E0ECFF;
   margin-left: 2px;
   padding: 2px;
-  background: #eaeff6 url(images/bg_suggestgradient.gif) repeat-x;
+  background: #eaeff6 url(../images/bg_suggestgradient.gif) repeat-x;
   border: 1px solid #bbbbbb;
 }
 
@@ -416,7 +416,7 @@ a, a:visited, a:hover {
 
 .gwt-SuggestBoxPopup .item-selected {
   background-color: #E0EDFE;
-  background: #eaeff6 url(images/bg_listgradient.gif) repeat-x;
+  background: #eaeff6 url(../images/bg_listgradient.gif) repeat-x;
 }
 
 /**
@@ -440,7 +440,7 @@ a, a:visited, a:hover {
   cursor: hand;
   color: #666666;
   font-weight: bold;
-  background: white url(images/tab.gif) no-repeat right top;
+  background: white url(../images/tab.gif) no-repeat right top;
   margin-left: 6px;    /* Size of right image, used for sliding window */
   padding-right: 10px; /* +6px to balance margin-left */
   text-align: center;
@@ -448,18 +448,18 @@ a, a:visited, a:hover {
 
 .gwt-TabBar .gwt-TabBarItem-wrapper {
   padding: 0px;
-  background: white url(images/tab.gif) no-repeat left top;
+  background: white url(../images/tab.gif) no-repeat left top;
   border-left: 5px solid white; /* Spacing between tabs */
 }
 
 .gwt-TabBar .gwt-TabBarItem-selected {
   cursor: default;
   color: black;
-  background: white url(images/tab.gif) no-repeat right -100px;
+  background: white url(../images/tab.gif) no-repeat right -100px;
 }
 
 .gwt-TabBar .gwt-TabBarItem-wrapper-selected {
-  background: white url(images/tab.gif) no-repeat left -100px;
+  background: white url(../images/tab.gif) no-repeat left -100px;
 }
 
 .gwt-TabPanel {
@@ -590,6 +590,6 @@ a, a:visited, a:hover {
 }
 
 .gwt-Tree .gwt-TreeItem-selected {
-  background: #93c2f1 url(images/bg_listgradient.gif) repeat-x;
+  background: #93c2f1 url(../images/bg_listgradient.gif) repeat-x;
   border: 1px dotted #888;
 }
