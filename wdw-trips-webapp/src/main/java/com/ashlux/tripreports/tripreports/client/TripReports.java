@@ -3,8 +3,8 @@ package com.ashlux.tripreports.tripreports.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -13,7 +13,9 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class TripReports
         rootPanel.setWidth( "100%" );
         rootPanel.add( createHeaderWidget() );
         rootPanel.add( createWorkspacePanel() );
+        rootPanel.add( previousHappeningsVerticalPanel );
 
         // get most recent happenings
         TripReportsService.App.getInstance().getPreviousHappenings( new PreviousHappeningsAsyncCallback() );
@@ -40,9 +43,11 @@ public class TripReports
     private Widget createHeaderWidget()
     {
         Label logoLabel = new Label( "WDW Trip Reports" );
+        logoLabel.setWidth( "100%" );
         logoLabel.setHorizontalAlignment( Label.ALIGN_LEFT );
 
         VerticalPanel verticalPanel = new VerticalPanel();
+        verticalPanel.setWidth( "100%" );
         verticalPanel.setHorizontalAlignment( VerticalPanel.ALIGN_RIGHT );
         verticalPanel.setVerticalAlignment( VerticalPanel.ALIGN_MIDDLE );
         verticalPanel.add( new Label( "username" ) );
@@ -78,35 +83,31 @@ public class TripReports
 
     private Widget createWhatsHappeningWidget()
     {
-        final VerticalPanel happeningVerticalPanel = new VerticalPanel();
+        Grid grid = new Grid( 3, 2 );
+        grid.setSize( "200px", "300px" );
 
-        final VerticalPanel whatsHappeningPanel = new VerticalPanel();
+        Label whoAreYouLabel = new Label( "Who are you?" );
+        whoAreYouLabel.setHorizontalAlignment( Label.ALIGN_RIGHT );
+        grid.setWidget( 0, 0, whoAreYouLabel );
+        grid.setWidget( 0, 1, whoAreYouTextBox );
 
-        final HorizontalPanel whoAreYouInputPanel = new HorizontalPanel();
-        whoAreYouInputPanel.add( new Label( "Who are you?" ) );
-        whoAreYouInputPanel.add( whoAreYouTextBox );
-        whatsHappeningPanel.add( whoAreYouInputPanel );
-
-        final HorizontalPanel whatsHappeningInputPanel = new HorizontalPanel();
-        whatsHappeningInputPanel.add( new Label( "What's happening?" ) );
-        whatsHappeningInputPanel.add( whatsHappeningTextArea );
-        whatsHappeningPanel.add( whatsHappeningInputPanel );
+        Label whatsHappeningLabel = new Label( "What's happening?" );
+        whatsHappeningLabel.setHorizontalAlignment( Label.ALIGN_RIGHT );
+        grid.setWidget( 1, 0, whatsHappeningLabel );
+        grid.setWidget( 1, 1, whatsHappeningTextArea );
 
         final Button updateButton = new Button( "Update" );
-        whatsHappeningPanel.add( updateButton );
+        updateButton.addClickHandler( new UpdateButtonClickHandler() );
 
-        updateButton.addClickListener( new UpdateButtonClickListener() );
+        grid.setWidget( 2, 1, updateButton );
 
-        happeningVerticalPanel.add( whatsHappeningPanel );
-        happeningVerticalPanel.add( previousHappeningsVerticalPanel );
-
-        return happeningVerticalPanel;
+        return grid;
     }
 
-    public class UpdateButtonClickListener
-        implements ClickListener
+    public class UpdateButtonClickHandler
+        implements ClickHandler
     {
-        public void onClick( Widget sender )
+        public void onClick( ClickEvent clickEvent )
         {
             TripReportsService.App.getInstance().addHappening( whoAreYouTextBox.getText(),
                                                                whatsHappeningTextArea.getText(),
