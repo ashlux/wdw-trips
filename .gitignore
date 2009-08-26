@@ -3,3 +3,4 @@
 *.iws
 target
 test-output
+.DS_Store
