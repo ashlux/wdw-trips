@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 
 import java.util.List;
 
@@ -77,6 +78,7 @@ public class TripReports
         workspaceTapPanel.setAnimationEnabled( true );
         workspaceTapPanel.setWidth( "100%" );
         workspaceTapPanel.add( createWhatsHappeningWidget(), "What's happening?" );
+        workspaceTapPanel.selectTab( 0 );
         workspaceTapPanel.add( new Label( "Content2" ), "Your trips" );
         workspaceTapPanel.add( new Label( "Content3" ), "Search" );
         workspaceTapPanel.add( new Label( "Content4" ), "Settings" );
@@ -86,22 +88,26 @@ public class TripReports
     private Widget createWhatsHappeningWidget()
     {
         Grid grid = new Grid( 3, 2 );
-        grid.setSize( "200px", "300px" );
+        grid.getColumnFormatter().setWidth( 0, "130" );
 
         Label whoAreYouLabel = new Label( "Who are you?" );
         whoAreYouLabel.setHorizontalAlignment( Label.ALIGN_RIGHT );
         grid.setWidget( 0, 0, whoAreYouLabel );
         grid.setWidget( 0, 1, whoAreYouTextBox );
+        whoAreYouTextBox.setWidth( "100%" );
 
         Label whatsHappeningLabel = new Label( "What's happening?" );
         whatsHappeningLabel.setHorizontalAlignment( Label.ALIGN_RIGHT );
         grid.setWidget( 1, 0, whatsHappeningLabel );
         grid.setWidget( 1, 1, whatsHappeningTextArea );
+        whatsHappeningTextArea.setWidth( "100%" );
+        whatsHappeningTextArea.setHeight( "70" );
 
         final Button updateButton = new Button( "Update" );
         updateButton.addClickHandler( new UpdateButtonClickHandler() );
 
         grid.setWidget( 2, 1, updateButton );
+        grid.getCellFormatter().setHorizontalAlignment( 2, 1, HasHorizontalAlignment.ALIGN_RIGHT );
 
         return grid;
     }
