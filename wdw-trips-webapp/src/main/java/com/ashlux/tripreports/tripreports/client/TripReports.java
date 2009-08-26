@@ -33,10 +33,11 @@ public class TripReports
     {
         @SuppressWarnings({"GwtToHtmlReferences"})
         RootPanel rootPanel = RootPanel.get( "slot" );
-        rootPanel.setWidth( "100%" );
         rootPanel.add( createHeaderWidget() );
         rootPanel.add( createWorkspacePanel() );
         rootPanel.add( previousHappeningsVerticalPanel );
+        rootPanel.add( new com.gwtext.client.widgets.Button("BUTTON") );
+        rootPanel.add( new Button("BUTTON") );
 
         // get most recent happenings
         TripReportsService.App.getInstance().getPreviousHappenings( new PreviousHappeningsAsyncCallback(previousHappeningsVerticalPanel) );

@@ -1,15 +1,16 @@
 <module>
-
-  <!-- Inherit the core Web Toolkit stuff.                  -->
   <inherits name='com.google.gwt.user.User'/>
-  <inherits name='com.extjs.gxt.ui.GXT'/>
+  <inherits name='com.gwtext.GwtExt'/>
+  <!--<inherits name="com.gwtextux.GwtExtUx"/>-->
+  <inherits name="com.google.gwt.core.Core"/>
+  <inherits name="com.google.gwt.user.History"/>
+  <inherits name="com.google.gwt.i18n.I18N"/>
+  <inherits name="com.gwtext.Pagebus"/>
+  <inherits name="com.gwtext.SyntaxHighlighter"/>
 
-  <!-- Specify the app entry point class.                   -->
   <entry-point class='com.ashlux.tripreports.tripreports.client.TripReports'/>
 
 
-  <!-- Specify the app servlets.                   -->
   <servlet path='/com.ashlux.tripreports.tripreports.TripReports/TripReportsService'
            class='com.ashlux.tripreports.tripreports.server.TripReportsServiceImpl'/>
-
 </module>

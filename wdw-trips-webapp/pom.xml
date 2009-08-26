@@ -108,7 +108,12 @@
       <version>2.0.1</version>
       <scope>compile</scope>
     </dependency>
-
+    <dependency>
+      <groupId>com.gwtext</groupId>
+      <artifactId>gwtext</artifactId>
+      <version>2.0.5</version>
+      <scope>compile</scope>
+    </dependency>
 
     <!--
     See http://shalinsays.blogspot.com/2009/04/google-app-engine-and-maven.html
@@ -177,5 +182,13 @@
       <scope>compile</scope>
     </dependency>
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>gwt-ext</id>
+      <url>http://www.gwt-ext.com/maven2/</url>
+    </repository>
+  </repositories>
+
 
 </project>
