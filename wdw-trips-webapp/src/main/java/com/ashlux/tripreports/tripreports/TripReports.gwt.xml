@@ -2,6 +2,7 @@
 
   <!-- Inherit the core Web Toolkit stuff.                  -->
   <inherits name='com.google.gwt.user.User'/>
+  <inherits name='com.extjs.gxt.ui.GXT'/>
 
   <!-- Specify the app entry point class.                   -->
   <entry-point class='com.ashlux.tripreports.tripreports.client.TripReports'/>
