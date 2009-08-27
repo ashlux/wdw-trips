@@ -2,18 +2,19 @@ package com.ashlux.tripreports.tripreports.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtext.client.core.EventObject;
 import com.gwtext.client.core.Position;
 import com.gwtext.client.widgets.Button;
+import com.gwtext.client.widgets.MessageBox;
 import com.gwtext.client.widgets.Panel;
 import com.gwtext.client.widgets.TabPanel;
-import com.gwtext.client.widgets.MessageBox;
+import com.gwtext.client.widgets.Viewport;
 import com.gwtext.client.widgets.event.ButtonListenerAdapter;
 import com.gwtext.client.widgets.form.FormPanel;
 import com.gwtext.client.widgets.form.TextArea;
 import com.gwtext.client.widgets.form.TextField;
+import com.gwtext.client.widgets.layout.AnchorLayout;
 import com.gwtext.client.widgets.layout.FitLayout;
 import com.gwtext.client.widgets.layout.RowLayout;
 
@@ -35,39 +36,37 @@ public class TripReports
         Panel panel = new Panel();
         panel.setBorder( false );
         panel.setPaddings( 15 );
-        panel.setHeight( "100%" );
+        panel.setLayout( new FitLayout() );
 
         panel.add( createTabPanel() );
 
-        RootPanel.get().add( panel );
+        new Viewport( panel );
     }
 
     private Panel createTabPanel()
     {
         Panel panel = new Panel();
         panel.setBorder( false );
-        panel.setPaddings( 15 );
+        panel.setPaddings( 5 );
         panel.setLayout( new FitLayout() );
-        panel.setHeight( "100%" );
 
         tabPanel.setTabPosition( Position.TOP );
         tabPanel.setResizeTabs( false );
         tabPanel.setMinTabWidth( 115 );
         tabPanel.setTabWidth( 135 );
         tabPanel.setActiveTab( 0 );
-        tabPanel.setHeight( "100%" );
 
         Panel whatsHappeningPanel = new Panel();
         whatsHappeningPanel.setTitle( "What's happening?" );
         whatsHappeningPanel.setAutoScroll( true );
         whatsHappeningPanel.add( createWhatsHappeningForm() );
-        whatsHappeningPanel.setHeight( "100%" );
+        whatsHappeningPanel.setPaddings( 15 );
 
         Panel yourTripsPanel = new Panel();
         yourTripsPanel.setTitle( "Your trips" );
         yourTripsPanel.setAutoScroll( true );
         yourTripsPanel.add( createYourTrips() );
-        yourTripsPanel.setHeight( "100%" );
+        yourTripsPanel.setPaddings( 15 );
 
         tabPanel.add( whatsHappeningPanel );
         tabPanel.add( yourTripsPanel );
@@ -80,10 +79,9 @@ public class TripReports
     {
         yourTripsPanel = new Panel();
         yourTripsPanel.setLayout( new RowLayout() );
-        yourTripsPanel.setBorder( true );
-        yourTripsPanel.setTitle( "Things that have happened on your trip" );
+        yourTripsPanel.setBorder( false );
+        yourTripsPanel.setLayout( new AnchorLayout() );
         yourTripsPanel.setWidth( "100%" );
-
 
         TripReportsService.App.getInstance().getPreviousHappenings( new AsyncCallback<List<HappeningsDTO>>()
         {
@@ -94,7 +92,6 @@ public class TripReports
 
             public void onSuccess( List<HappeningsDTO> happeningsDTOs )
             {
-                MessageBox.alert( "Successfully got list of happenings." );
                 for ( HappeningsDTO happeningsDTO : happeningsDTOs )
                 {
                     addHappeningToPanel( happeningsDTO, yourTripsPanel );
@@ -112,7 +109,13 @@ public class TripReports
         happeningPanel.setClosable( true );
         happeningPanel.setAutoScroll( true );
         happeningPanel.setHtml( happeningsDTO.getDetails() );
+
+        Panel spacingPanel = new Panel();
+        spacingPanel.setBorder( false );
+        spacingPanel.setHeight( 20 );
+
         panel.add( happeningPanel );
+        panel.add( spacingPanel );
     }
 
     private Panel createWhatsHappeningForm()
@@ -137,7 +140,6 @@ public class TripReports
             @Override
             public void onClick( Button button, EventObject eventObject )
             {
-                MessageBox.alert( "Clicked update happening." );
                 TripReportsService.App.getInstance().addHappening( whoAreYouTextField.getText(),
                                                                    whatsHappeningTextArea.getText(),
                                                                    new SendNewHappeningAsyncCallback() );
