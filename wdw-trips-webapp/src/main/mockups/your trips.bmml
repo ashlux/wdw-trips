@@ -1,0 +1,49 @@
+<mockup version="1.0" skin="sketch" measuredW="825" measuredH="620">
+  <controls>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="15" y="4" w="800" h="606" measuredW="450" measuredH="400" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WDW%20Trip%20Reports%0Ahttp%3A//www.wdwtripreports.com/</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::TabBar" x="37" y="148" w="744" h="405" measuredW="475" measuredH="100" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Recent%20happenings%2C%20What%27s%20happening%3F%2C%20Your%20trips%2C%20Settings</text>
+        <verticalScrollbar>false</verticalScrollbar>
+        <selectedIndex>2</selectedIndex>
+        <tabVPosition>top</tabVPosition>
+        <tabHPosition>left</tabHPosition>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="30" y="87" w="-1" h="-1" measuredW="352" measuredH="56" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WDW%20Trip%20Reports</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::LinkBar" x="583" y="110" w="-1" h="-1" measuredW="207" measuredH="23" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>My%20Profile%2C%20Settings%2C%20Logout</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="664" y="87" w="121" h="23" measuredW="121" measuredH="23" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>ashlux%20%28Ashley%20Lux%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::TabBar" x="35" y="148" w="760" h="318" measuredW="405" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>What%27s%20happening%3F%2C%20Your%20trips%2C%20Search%2C%20Settings</text>
+        <verticalScrollbar>false</verticalScrollbar>
+        <selectedIndex>0</selectedIndex>
+        <tabVPosition>top</tabVPosition>
+        <tabHPosition>left</tabHPosition>
+      </controlProperties>
+    </control>
+    <control controlID="77" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="15" y="4" w="800" h="606" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WDW%20Trip%20Reports%0Ahttp%3A//www.wdwtripreports.com/</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
