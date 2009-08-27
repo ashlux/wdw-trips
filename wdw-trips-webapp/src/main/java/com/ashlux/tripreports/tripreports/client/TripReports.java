@@ -5,18 +5,17 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Grid;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.gwtext.client.widgets.Panel;
+import com.gwtext.client.widgets.Viewport;
+import com.gwtext.client.widgets.form.Label;
+import com.gwtext.client.widgets.layout.FitLayout;
 
 import java.util.List;
 
@@ -31,47 +30,31 @@ public class TripReports
 
     public void onModuleLoad()
     {
-        @SuppressWarnings({"GwtToHtmlReferences"})
-        RootPanel rootPanel = RootPanel.get( "slot" );
-        rootPanel.add( createHeaderWidget() );
-        rootPanel.add( createWorkspacePanel() );
-        rootPanel.add( previousHappeningsVerticalPanel );
-        rootPanel.add( new com.gwtext.client.widgets.Button("BUTTON") );
-        rootPanel.add( new Button("BUTTON") );
+        Panel panel = new Panel();
+        panel.setBorder( false );
+        panel.setPaddings( 15 );
+        panel.setLayout( new FitLayout() );
 
-        // get most recent happenings
-        TripReportsService.App.getInstance().getPreviousHappenings( new PreviousHappeningsAsyncCallback(previousHappeningsVerticalPanel) );
+        panel.add( createHeaderWidget() );
+//        panel.add( createWorkspacePanel() );
+//        panel.add( previousHappeningsVerticalPanel );
+//        panel.add( new com.gwtext.client.widgets.Button( "BUTTON" ) );
+//        panel.add( new Button( "BUTTON" ) );
+
+        new Viewport( panel );
+
+        // get most recent happenings, callback loads them
+        TripReportsService.App.getInstance().getPreviousHappenings(
+            new PreviousHappeningsAsyncCallback( previousHappeningsVerticalPanel ) );
     }
 
     private Widget createHeaderWidget()
     {
-        Label logoLabel = new Label( "WDW Trip Reports" );
-        logoLabel.setStyleName( "wdw-LogoText" );
-        logoLabel.setWidth( "100%" );
-        logoLabel.setHorizontalAlignment( Label.ALIGN_LEFT );
-
-        VerticalPanel verticalPanel = new VerticalPanel();
-        verticalPanel.setWidth( "100%" );
-        verticalPanel.setHorizontalAlignment( VerticalPanel.ALIGN_RIGHT );
-        verticalPanel.setVerticalAlignment( VerticalPanel.ALIGN_MIDDLE );
-        verticalPanel.add( new Label( "username" ) );
-
-        HorizontalPanel linkHorizontalPanel = new HorizontalPanel();
-        linkHorizontalPanel.add( new Label( "My profile" ) );
-        linkHorizontalPanel.add( new Label( ", " ) );
-        linkHorizontalPanel.add( new Label( "Settings" ) );
-        linkHorizontalPanel.add( new Label( ", " ) );
-        linkHorizontalPanel.add( new Label( "Logout" ) );
-        verticalPanel.add( linkHorizontalPanel );
-
-        DockPanel headerDockPanel = new DockPanel();
-        headerDockPanel.add( logoLabel, DockPanel.WEST );
-        headerDockPanel.add( verticalPanel, DockPanel.EAST );
-
-        headerDockPanel.setWidth( "100%" );
-
-        return headerDockPanel;
+        Panel panel = new Panel();
+//        panel.add( new Label("WDW Trip Reports") );
+        return panel;
     }
+
 
     private Widget createWorkspacePanel()
     {
@@ -92,13 +75,11 @@ public class TripReports
         grid.getColumnFormatter().setWidth( 0, "130" );
 
         Label whoAreYouLabel = new Label( "Who are you?" );
-        whoAreYouLabel.setHorizontalAlignment( Label.ALIGN_RIGHT );
         grid.setWidget( 0, 0, whoAreYouLabel );
         grid.setWidget( 0, 1, whoAreYouTextBox );
         whoAreYouTextBox.setWidth( "100%" );
 
         Label whatsHappeningLabel = new Label( "What's happening?" );
-        whatsHappeningLabel.setHorizontalAlignment( Label.ALIGN_RIGHT );
         grid.setWidget( 1, 0, whatsHappeningLabel );
         grid.setWidget( 1, 1, whatsHappeningTextArea );
         whatsHappeningTextArea.setWidth( "100%" );
@@ -120,16 +101,17 @@ public class TripReports
         {
             TripReportsService.App.getInstance().addHappening( whoAreYouTextBox.getText(),
                                                                whatsHappeningTextArea.getText(),
-                                                               new AddHappeningAsyncCallback(previousHappeningsVerticalPanel) );
+                                                               new AddHappeningAsyncCallback(
+                                                                   previousHappeningsVerticalPanel ) );
         }
     }
 
     public class AddHappeningAsyncCallback
         implements AsyncCallback<HappeningsDTO>
     {
-        Panel panel;
+        com.google.gwt.user.client.ui.Panel panel;
 
-        public AddHappeningAsyncCallback( Panel panel )
+        public AddHappeningAsyncCallback( com.google.gwt.user.client.ui.Panel panel )
         {
             this.panel = panel;
         }
@@ -149,9 +131,9 @@ public class TripReports
     public class PreviousHappeningsAsyncCallback
         implements AsyncCallback<List<HappeningsDTO>>
     {
-        Panel panel;
+        com.google.gwt.user.client.ui.Panel panel;
 
-        public PreviousHappeningsAsyncCallback( Panel panel )
+        public PreviousHappeningsAsyncCallback( com.google.gwt.user.client.ui.Panel panel )
         {
             this.panel = panel;
         }
@@ -170,10 +152,9 @@ public class TripReports
         }
     }
 
-    private void addPreviousPosting( HappeningsDTO happeningsDTO, Panel panel )
+    private void addPreviousPosting( HappeningsDTO happeningsDTO, com.google.gwt.user.client.ui.Panel panel )
     {
-        panel.add(
-            new Label( "Posted by " + happeningsDTO.getName() + " on " + happeningsDTO.getDate() ) );
+        panel.add( new Label( "Posted by " + happeningsDTO.getName() + " on " + happeningsDTO.getDate() ) );
         panel.add( new Label( happeningsDTO.getDetails() ) );
         panel.add( new Label( "---------------------------------------------------" ) );
     }

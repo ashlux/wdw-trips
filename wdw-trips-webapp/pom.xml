@@ -114,6 +114,12 @@
       <version>2.0.5</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>com.gwtextux</groupId>
+      <artifactId>gwtextux</artifactId>
+      <version>0.3</version>
+      <scope>compile</scope>
+    </dependency>
 
     <!--
     See http://shalinsays.blogspot.com/2009/04/google-app-engine-and-maven.html
