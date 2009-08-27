@@ -1,161 +1,164 @@
 package com.ashlux.tripreports.tripreports.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Grid;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.TabPanel;
-import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtext.client.core.EventObject;
+import com.gwtext.client.core.Position;
+import com.gwtext.client.widgets.Button;
 import com.gwtext.client.widgets.Panel;
-import com.gwtext.client.widgets.Viewport;
-import com.gwtext.client.widgets.form.Label;
+import com.gwtext.client.widgets.TabPanel;
+import com.gwtext.client.widgets.MessageBox;
+import com.gwtext.client.widgets.event.ButtonListenerAdapter;
+import com.gwtext.client.widgets.form.FormPanel;
+import com.gwtext.client.widgets.form.TextArea;
+import com.gwtext.client.widgets.form.TextField;
 import com.gwtext.client.widgets.layout.FitLayout;
+import com.gwtext.client.widgets.layout.RowLayout;
 
 import java.util.List;
 
 public class TripReports
     implements EntryPoint
 {
-    private VerticalPanel previousHappeningsVerticalPanel = new VerticalPanel();
+    private TextField whoAreYouTextField = new TextField( "Who are you?", "name" );
 
-    private TextBox whoAreYouTextBox = new TextBox();
+    private TextArea whatsHappeningTextArea = new TextArea( "What's happening?", "name" );
 
-    private TextArea whatsHappeningTextArea = new TextArea();
+    private Panel yourTripsPanel;
+
+    private TabPanel tabPanel = new TabPanel();
 
     public void onModuleLoad()
     {
         Panel panel = new Panel();
         panel.setBorder( false );
         panel.setPaddings( 15 );
-        panel.setLayout( new FitLayout() );
+        panel.setHeight( "100%" );
 
-        panel.add( createHeaderWidget() );
-//        panel.add( createWorkspacePanel() );
-//        panel.add( previousHappeningsVerticalPanel );
-//        panel.add( new com.gwtext.client.widgets.Button( "BUTTON" ) );
-//        panel.add( new Button( "BUTTON" ) );
+        panel.add( createTabPanel() );
 
-        new Viewport( panel );
-
-        // get most recent happenings, callback loads them
-        TripReportsService.App.getInstance().getPreviousHappenings(
-            new PreviousHappeningsAsyncCallback( previousHappeningsVerticalPanel ) );
+        RootPanel.get().add( panel );
     }
 
-    private Widget createHeaderWidget()
+    private Panel createTabPanel()
     {
         Panel panel = new Panel();
-//        panel.add( new Label("WDW Trip Reports") );
+        panel.setBorder( false );
+        panel.setPaddings( 15 );
+        panel.setLayout( new FitLayout() );
+        panel.setHeight( "100%" );
+
+        tabPanel.setTabPosition( Position.TOP );
+        tabPanel.setResizeTabs( false );
+        tabPanel.setMinTabWidth( 115 );
+        tabPanel.setTabWidth( 135 );
+        tabPanel.setActiveTab( 0 );
+        tabPanel.setHeight( "100%" );
+
+        Panel whatsHappeningPanel = new Panel();
+        whatsHappeningPanel.setTitle( "What's happening?" );
+        whatsHappeningPanel.setAutoScroll( true );
+        whatsHappeningPanel.add( createWhatsHappeningForm() );
+        whatsHappeningPanel.setHeight( "100%" );
+
+        Panel yourTripsPanel = new Panel();
+        yourTripsPanel.setTitle( "Your trips" );
+        yourTripsPanel.setAutoScroll( true );
+        yourTripsPanel.add( createYourTrips() );
+        yourTripsPanel.setHeight( "100%" );
+
+        tabPanel.add( whatsHappeningPanel );
+        tabPanel.add( yourTripsPanel );
+        panel.add( tabPanel );
+
         return panel;
     }
 
-
-    private Widget createWorkspacePanel()
+    private Widget createYourTrips()
     {
-        TabPanel workspaceTapPanel = new TabPanel();
-        workspaceTapPanel.setAnimationEnabled( true );
-        workspaceTapPanel.setWidth( "100%" );
-        workspaceTapPanel.add( createWhatsHappeningWidget(), "What's happening?" );
-        workspaceTapPanel.selectTab( 0 );
-        workspaceTapPanel.add( new Label( "Content2" ), "Your trips" );
-        workspaceTapPanel.add( new Label( "Content3" ), "Search" );
-        workspaceTapPanel.add( new Label( "Content4" ), "Settings" );
-        return workspaceTapPanel;
-    }
+        yourTripsPanel = new Panel();
+        yourTripsPanel.setLayout( new RowLayout() );
+        yourTripsPanel.setBorder( true );
+        yourTripsPanel.setTitle( "Things that have happened on your trip" );
+        yourTripsPanel.setWidth( "100%" );
 
-    private Widget createWhatsHappeningWidget()
-    {
-        Grid grid = new Grid( 3, 2 );
-        grid.getColumnFormatter().setWidth( 0, "130" );
 
-        Label whoAreYouLabel = new Label( "Who are you?" );
-        grid.setWidget( 0, 0, whoAreYouLabel );
-        grid.setWidget( 0, 1, whoAreYouTextBox );
-        whoAreYouTextBox.setWidth( "100%" );
-
-        Label whatsHappeningLabel = new Label( "What's happening?" );
-        grid.setWidget( 1, 0, whatsHappeningLabel );
-        grid.setWidget( 1, 1, whatsHappeningTextArea );
-        whatsHappeningTextArea.setWidth( "100%" );
-        whatsHappeningTextArea.setHeight( "70" );
-
-        final Button updateButton = new Button( "Update" );
-        updateButton.addClickHandler( new UpdateButtonClickHandler() );
-
-        grid.setWidget( 2, 1, updateButton );
-        grid.getCellFormatter().setHorizontalAlignment( 2, 1, HasHorizontalAlignment.ALIGN_RIGHT );
-
-        return grid;
-    }
-
-    public class UpdateButtonClickHandler
-        implements ClickHandler
-    {
-        public void onClick( ClickEvent clickEvent )
+        TripReportsService.App.getInstance().getPreviousHappenings( new AsyncCallback<List<HappeningsDTO>>()
         {
-            TripReportsService.App.getInstance().addHappening( whoAreYouTextBox.getText(),
-                                                               whatsHappeningTextArea.getText(),
-                                                               new AddHappeningAsyncCallback(
-                                                                   previousHappeningsVerticalPanel ) );
-        }
+            public void onFailure( Throwable throwable )
+            {
+                MessageBox.alert( "Failed to get list of happenings." );
+            }
+
+            public void onSuccess( List<HappeningsDTO> happeningsDTOs )
+            {
+                MessageBox.alert( "Successfully got list of happenings." );
+                for ( HappeningsDTO happeningsDTO : happeningsDTOs )
+                {
+                    addHappeningToPanel( happeningsDTO, yourTripsPanel );
+                }
+            }
+        } );
+
+        return yourTripsPanel;
     }
 
-    public class AddHappeningAsyncCallback
+    private void addHappeningToPanel( HappeningsDTO happeningsDTO, Panel panel )
+    {
+        Panel happeningPanel = new Panel();
+        happeningPanel.setTitle( "Happening by " + happeningsDTO.getName() + " on " + happeningsDTO.getDate() );
+        happeningPanel.setClosable( true );
+        happeningPanel.setAutoScroll( true );
+        happeningPanel.setHtml( happeningsDTO.getDetails() );
+        panel.add( happeningPanel );
+    }
+
+    private Panel createWhatsHappeningForm()
+    {
+        final FormPanel formPanel = new FormPanel();
+        formPanel.setFrame( true );
+        formPanel.setBorder( true );
+        formPanel.setTitle( "What's happening on your trip?" );
+        formPanel.setWidth( "100%" );
+        formPanel.setLabelWidth( 175 );
+
+        whoAreYouTextField.setWidth( "100%" );
+        formPanel.add( whoAreYouTextField );
+
+        whatsHappeningTextArea.setWidth( "100%" );
+        whatsHappeningTextArea.setHeight( 100 );
+        formPanel.add( whatsHappeningTextArea );
+
+        Button updateButton = new Button( "Update happening" );
+        updateButton.addListener( new ButtonListenerAdapter()
+        {
+            @Override
+            public void onClick( Button button, EventObject eventObject )
+            {
+                MessageBox.alert( "Clicked update happening." );
+                TripReportsService.App.getInstance().addHappening( whoAreYouTextField.getText(),
+                                                                   whatsHappeningTextArea.getText(),
+                                                                   new SendNewHappeningAsyncCallback() );
+            }
+        } );
+        formPanel.addButton( updateButton );
+        return formPanel;
+    }
+
+    public class SendNewHappeningAsyncCallback
         implements AsyncCallback<HappeningsDTO>
     {
-        com.google.gwt.user.client.ui.Panel panel;
-
-        public AddHappeningAsyncCallback( com.google.gwt.user.client.ui.Panel panel )
-        {
-            this.panel = panel;
-        }
-
-
         public void onFailure( Throwable throwable )
         {
-            // ignore failure
+            MessageBox.alert( "Failed to send new happening. Please try again." );
         }
 
         public void onSuccess( HappeningsDTO happeningsDTO )
         {
-            addPreviousPosting( happeningsDTO, panel );
+            MessageBox.alert( "Successfully sent new happening!" );
+            addHappeningToPanel( happeningsDTO, yourTripsPanel );
         }
-    }
-
-    public class PreviousHappeningsAsyncCallback
-        implements AsyncCallback<List<HappeningsDTO>>
-    {
-        com.google.gwt.user.client.ui.Panel panel;
-
-        public PreviousHappeningsAsyncCallback( com.google.gwt.user.client.ui.Panel panel )
-        {
-            this.panel = panel;
-        }
-
-        public void onFailure( Throwable throwable )
-        {
-            // ignore failures for now
-        }
-
-        public void onSuccess( List<HappeningsDTO> happeningsDTOs )
-        {
-            for ( HappeningsDTO happeningsDTO : happeningsDTOs )
-            {
-                addPreviousPosting( happeningsDTO, panel );
-            }
-        }
-    }
-
-    private void addPreviousPosting( HappeningsDTO happeningsDTO, com.google.gwt.user.client.ui.Panel panel )
-    {
-        panel.add( new Label( "Posted by " + happeningsDTO.getName() + " on " + happeningsDTO.getDate() ) );
-        panel.add( new Label( happeningsDTO.getDetails() ) );
-        panel.add( new Label( "---------------------------------------------------" ) );
     }
 }
