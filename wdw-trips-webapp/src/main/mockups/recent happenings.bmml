@@ -1,18 +1,14 @@
-<mockup version="1.0" skin="sketch" measuredW="825" measuredH="620">
+<mockup version="1.0" skin="sketch" measuredW="1026" measuredH="620">
   <controls>
+    <control controlID="96" controlTypeID="com.balsamiq.mockups::Button" x="329" y="444" w="-1" h="-1" measuredW="171" measuredH="28" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Display%20more%20happenings</text>
+      </controlProperties>
+    </control>
     <control controlID="4" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="15" y="4" w="800" h="606" measuredW="450" measuredH="400" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <text>WDW%20Trip%20Reports%0Ahttp%3A//www.wdwtripreports.com/</text>
         <verticalScrollbar>true</verticalScrollbar>
-      </controlProperties>
-    </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::TabBar" x="37" y="148" w="744" h="405" measuredW="475" measuredH="100" zOrder="6" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Recent%20happenings%2C%20What%27s%20happening%3F%2C%20Your%20trips%2C%20Settings</text>
-        <verticalScrollbar>false</verticalScrollbar>
-        <selectedIndex>0</selectedIndex>
-        <tabVPosition>top</tabVPosition>
-        <tabHPosition>left</tabHPosition>
       </controlProperties>
     </control>
     <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="30" y="87" w="-1" h="-1" measuredW="352" measuredH="56" zOrder="3" locked="false" isInGroup="-1">
@@ -43,6 +39,60 @@
       <controlProperties>
         <text>WDW%20Trip%20Reports%0Ahttp%3A//www.wdwtripreports.com/</text>
         <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::FieldSet" x="55" y="190" w="708" h="108" measuredW="200" measuredH="170" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Happening%20by%20Ash%20Lux%20on%20March%2029%2C%202009%2009%3A00%3A00%20AM</text>
+      </controlProperties>
+    </control>
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::Paragraph" x="76" y="209" w="672" h="36" measuredW="200" measuredH="140" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Went%20to%20MGM%20for%20my%20birthday.%20Free%20admission%21%20%5Bmore...%5D</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::Button" x="664" y="255" w="-1" h="-1" measuredW="33" measuredH="28" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%21%21%21</text>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::Button" x="705" y="255" w="-1" h="-1" measuredW="37" measuredH="28" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3C3</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::TabBar" x="37" y="148" w="744" h="405" measuredW="475" measuredH="100" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Recent%20happenings%2C%20What%27s%20happening%3F%2C%20Your%20trips%2C%20Settings</text>
+        <verticalScrollbar>false</verticalScrollbar>
+        <selectedIndex>0</selectedIndex>
+        <tabVPosition>top</tabVPosition>
+        <tabHPosition>left</tabHPosition>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::FieldSet" x="55" y="302" w="708" h="123" measuredW="200" measuredH="170" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Happening%20by%20Rachel%20Kraft%20on%20March%2029%2C%202009%2008%3A32%3A00%20AM</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::Paragraph" x="76" y="325" w="672" h="44" measuredW="200" measuredH="140" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Off%20to%20an%20early%20start.%20Couldn%27t%20sleep%20last%20night%20-%20too%20excited%21%20Flight%20leaves%20in%2050%20minutes%20for%20MCO%2C%20then%20rent%20a%20car%20from%20Thrifty.%20**cheers**%20%5Bmore...%5D</text>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::Button" x="664" y="382" w="33" h="-1" measuredW="33" measuredH="28" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%21%21%21</text>
+      </controlProperties>
+    </control>
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::Button" x="705" y="382" w="37" h="-1" measuredW="37" measuredH="28" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3C3</text>
+      </controlProperties>
+    </control>
+    <control controlID="95" controlTypeID="com.balsamiq.mockups::VCurly" x="836" y="197" w="180" h="220" measuredW="180" measuredH="140" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Lists%20most%20recent%20N%20happenings.%20Polls%20for%20new%20ones%20only%20if%20user%20is%20on%20this%20tab.</text>
       </controlProperties>
     </control>
   </controls>

@@ -54,7 +54,13 @@ public class TripReports
         tabPanel.setResizeTabs( false );
         tabPanel.setMinTabWidth( 115 );
         tabPanel.setTabWidth( 135 );
-        tabPanel.setActiveTab( 0 );
+        tabPanel.setActiveTab( 1 ); // What's happening?
+
+        Panel recentHappeningsPanel = new Panel();
+        recentHappeningsPanel.setTitle( "Recent happenings" );
+        recentHappeningsPanel.setAutoScroll( true );
+        recentHappeningsPanel.add( recentHappeningsPanel() );
+        recentHappeningsPanel.setPaddings( 15 );
 
         Panel whatsHappeningPanel = new Panel();
         whatsHappeningPanel.setTitle( "What's happening?" );
@@ -62,20 +68,14 @@ public class TripReports
         whatsHappeningPanel.add( createWhatsHappeningForm() );
         whatsHappeningPanel.setPaddings( 15 );
 
-        Panel yourTripsPanel = new Panel();
-        yourTripsPanel.setTitle( "Your trips" );
-        yourTripsPanel.setAutoScroll( true );
-        yourTripsPanel.add( createYourTrips() );
-        yourTripsPanel.setPaddings( 15 );
-
+        tabPanel.add( recentHappeningsPanel );
         tabPanel.add( whatsHappeningPanel );
-        tabPanel.add( yourTripsPanel );
         panel.add( tabPanel );
 
         return panel;
     }
 
-    private Widget createYourTrips()
+    private Widget recentHappeningsPanel()
     {
         yourTripsPanel = new Panel();
         yourTripsPanel.setLayout( new RowLayout() );
@@ -106,7 +106,7 @@ public class TripReports
     {
         Panel happeningPanel = new Panel();
         happeningPanel.setTitle( "Happening by " + happeningsDTO.getName() + " on " + happeningsDTO.getDate() );
-        happeningPanel.setClosable( true );
+        happeningPanel.setCollapsible( true );
         happeningPanel.setAutoScroll( true );
         happeningPanel.setHtml( happeningsDTO.getDetails() );
 
