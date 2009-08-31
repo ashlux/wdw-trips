@@ -7,6 +7,7 @@
   <inherits name="com.google.gwt.i18n.I18N"/>
   <inherits name="com.gwtext.Pagebus"/>
   <inherits name="com.gwtext.SyntaxHighlighter"/>
+  <inherits name="com.google.gwt.junit.JUnit"/>
 
   <entry-point class='com.ashlux.tripreports.tripreports.client.TripReports'/>
 

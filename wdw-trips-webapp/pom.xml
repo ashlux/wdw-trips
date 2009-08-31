@@ -17,6 +17,7 @@
 
   <properties>
     <gwt.version>1.7.0</gwt.version>
+    <platform>mac</platform>
   </properties>
 
   <build>
@@ -31,9 +32,16 @@
         </configuration>
         <executions>
           <execution>
+            <id>compile</id>
             <phase>compile</phase>
             <goals>
               <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>test</id>
+            <goals>
+              <goal>test</goal>
             </goals>
           </execution>
         </executions>
@@ -43,10 +51,27 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>2.1-beta-1</version>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.4.3</version>
+        <configuration>
+          <argLine>-XstartOnFirstThread</argLine>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>org.testng</groupId>                              
+      <artifactId>testng</artifactId>
+      <version>5.9</version>
+      <classifier>jdk15</classifier>
+      <!-- Scope = compile since gwt module inherits junit testing    -->
+      <scope>compile</scope>
+    </dependency>
+
     <dependency>
       <groupId>com.ashlux.wdw-trips</groupId>
       <artifactId>wdw-trips-jpa</artifactId>
@@ -100,6 +125,21 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <version>${gwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>${gwt.version}</version>
+      <classifier>${platform}</classifier>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>${gwt.version}</version>
+      <classifier>${platform}-libs</classifier>
+      <type>zip</type>
       <scope>provided</scope>
     </dependency>
     <dependency>
