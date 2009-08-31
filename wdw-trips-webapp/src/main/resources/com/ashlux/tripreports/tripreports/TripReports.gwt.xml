@@ -11,11 +11,6 @@
 
   <entry-point class='com.ashlux.tripreports.tripreports.client.TripReports'/>
 
-  <stylesheet src="js/ext/resources/css/ext-all.css" />
-
-	<script src="js/ext/adapter/ext/ext-base.js" />
-	<script src="js/ext/ext-all.js" />
-
   <servlet path='/com.ashlux.tripreports.tripreports.TripReports/TripReportsService'
            class='com.ashlux.tripreports.tripreports.server.TripReportsServiceImpl'/>
 </module>
