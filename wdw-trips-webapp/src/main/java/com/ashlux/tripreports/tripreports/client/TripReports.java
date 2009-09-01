@@ -17,6 +17,7 @@ import com.gwtext.client.widgets.form.TextField;
 import com.gwtext.client.widgets.layout.AnchorLayout;
 import com.gwtext.client.widgets.layout.FitLayout;
 import com.gwtext.client.widgets.layout.RowLayout;
+import com.ashlux.tripreports.tripreports.client.vo.HappeningBean;
 
 import java.util.List;
 
@@ -83,18 +84,18 @@ public class TripReports
         yourTripsPanel.setLayout( new AnchorLayout() );
         yourTripsPanel.setWidth( "100%" );
 
-        TripReportsService.App.getInstance().getPreviousHappenings( new AsyncCallback<List<HappeningsDTO>>()
+        TripReportsService.App.getInstance().getPreviousHappenings( new AsyncCallback<List<HappeningBean>>()
         {
             public void onFailure( Throwable throwable )
             {
                 MessageBox.alert( "Failed to get list of happenings." );
             }
 
-            public void onSuccess( List<HappeningsDTO> happeningsDTOs )
+            public void onSuccess( List<HappeningBean> happeningBeans )
             {
-                for ( HappeningsDTO happeningsDTO : happeningsDTOs )
+                for ( HappeningBean happeningBean : happeningBeans )
                 {
-                    addHappeningToPanel( happeningsDTO, yourTripsPanel );
+                    addHappeningToPanel( happeningBean, yourTripsPanel );
                 }
             }
         } );
@@ -102,13 +103,13 @@ public class TripReports
         return yourTripsPanel;
     }
 
-    private void addHappeningToPanel( HappeningsDTO happeningsDTO, Panel panel )
+    private void addHappeningToPanel( HappeningBean happeningBean, Panel panel )
     {
         Panel happeningPanel = new Panel();
-        happeningPanel.setTitle( "Happening by " + happeningsDTO.getName() + " on " + happeningsDTO.getDate() );
+        happeningPanel.setTitle( "Happening by " + happeningBean.getName() + " on " + happeningBean.getDate() );
         happeningPanel.setCollapsible( true );
         happeningPanel.setAutoScroll( true );
-        happeningPanel.setHtml( happeningsDTO.getDetails() );
+        happeningPanel.setHtml( happeningBean.getDetails() );
 
         Panel spacingPanel = new Panel();
         spacingPanel.setBorder( false );
@@ -150,17 +151,17 @@ public class TripReports
     }
 
     public class SendNewHappeningAsyncCallback
-        implements AsyncCallback<HappeningsDTO>
+        implements AsyncCallback<HappeningBean>
     {
         public void onFailure( Throwable throwable )
         {
             MessageBox.alert( "Failed to send new happening. Please try again." );
         }
 
-        public void onSuccess( HappeningsDTO happeningsDTO )
+        public void onSuccess( HappeningBean happeningBean )
         {
             MessageBox.alert( "Successfully sent new happening!" );
-            addHappeningToPanel( happeningsDTO, yourTripsPanel );
+            addHappeningToPanel( happeningBean, yourTripsPanel );
         }
     }
 }

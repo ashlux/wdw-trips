@@ -1,9 +1,10 @@
-package com.ashlux.tripreports.tripreports.client;
+package com.ashlux.tripreports.tripreports.client.vo;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class HappeningsDTO implements Serializable
+public class HappeningBean
+    implements Serializable
 {
     private String name;
 

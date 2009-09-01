@@ -1,4 +1,4 @@
-package com.ashlux.tripreports.dao.jpa;
+package com.ashlux.tripreports.dao.jdo;
 
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.JDOHelper;

@@ -10,7 +10,9 @@ import java.util.Date;
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Happening
 {
-    /** @noinspection UnusedDeclaration*/
+    /**
+     * @noinspection UnusedDeclaration
+     */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Long id;
@@ -27,6 +29,11 @@ public class Happening
     public Long getId()
     {
         return id;
+    }
+
+    public void setId( Long id )
+    {
+        this.id = id;
     }
 
     public String getName()

@@ -12,5 +12,5 @@
   <entry-point class='com.ashlux.tripreports.tripreports.client.TripReports'/>
 
   <servlet path='/com.ashlux.tripreports.tripreports.TripReports/TripReportsService'
-           class='com.ashlux.tripreports.tripreports.server.TripReportsServiceImpl'/>
+           class='com.ashlux.tripreports.tripreports.server.service.TripReportsServiceImpl'/>
 </module>

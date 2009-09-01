@@ -3,16 +3,16 @@ package com.ashlux.tripreports.tripreports.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.rpc.RemoteService;
-import com.ashlux.tripreports.domain.Happening;
+import com.ashlux.tripreports.tripreports.client.vo.HappeningBean;
 
 import java.util.List;
 
 public interface TripReportsService
     extends RemoteService
 {
-    HappeningsDTO addHappening( String name, String message );
+    HappeningBean addHappening( String name, String message );
 
-    List<HappeningsDTO> getPreviousHappenings();
+    List<HappeningBean> getPreviousHappenings();
 
     public static class App
     {
