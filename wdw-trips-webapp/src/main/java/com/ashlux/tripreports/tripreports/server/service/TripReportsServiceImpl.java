@@ -3,9 +3,9 @@ package com.ashlux.tripreports.tripreports.server.service;
 import com.ashlux.tripreports.domain.Happening;
 import com.ashlux.tripreports.tripreports.client.TripReportsService;
 import com.ashlux.tripreports.tripreports.client.vo.HappeningBean;
-import com.ashlux.tripreports.tripreports.server.business.HappeningBusiness;
-import com.ashlux.tripreports.tripreports.server.business.HappeningBusinessImpl;
-import com.ashlux.tripreports.tripreports.server.factory.HappeningBeanFactory;
+import com.ashlux.tripreports.tripreports.server.business.happening.HappeningBusiness;
+import com.ashlux.tripreports.tripreports.server.business.happening.HappeningBusinessImpl;
+import com.ashlux.tripreports.tripreports.server.business.happening.HappeningBeanFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import java.util.List;

@@ -13,4 +13,7 @@
 
   <servlet path='/com.ashlux.tripreports.tripreports.TripReports/TripReportsService'
            class='com.ashlux.tripreports.tripreports.server.service.TripReportsServiceImpl'/>
+
+  <servlet path='/com.ashlux.tripreports.tripreports.TripReports/AttractionsService'
+           class='com.ashlux.tripreports.tripreports.server.service.AttractionsServiceImpl'/>
 </module>

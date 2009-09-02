@@ -1,4 +1,4 @@
-package com.ashlux.tripreports.tripreports.server.business;
+package com.ashlux.tripreports.tripreports.server.business.happening;
 
 import com.ashlux.tripreports.domain.Happening;
 

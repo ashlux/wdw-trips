@@ -2,6 +2,7 @@ package com.ashlux.tripreports.dao.jdo;
 
 import com.ashlux.tripreports.dao.HappeningDao;
 import com.ashlux.tripreports.domain.Happening;
+import com.ashlux.tripreports.domain.Attraction;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;

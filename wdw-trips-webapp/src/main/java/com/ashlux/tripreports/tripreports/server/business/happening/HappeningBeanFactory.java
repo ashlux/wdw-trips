@@ -1,4 +1,4 @@
-package com.ashlux.tripreports.tripreports.server.factory;
+package com.ashlux.tripreports.tripreports.server.business.happening;
 
 import com.ashlux.tripreports.domain.Happening;
 import com.ashlux.tripreports.tripreports.client.vo.HappeningBean;

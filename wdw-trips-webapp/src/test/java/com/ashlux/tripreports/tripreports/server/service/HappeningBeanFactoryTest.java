@@ -2,7 +2,7 @@ package com.ashlux.tripreports.tripreports.server.service;
 
 import com.ashlux.tripreports.domain.Happening;
 import com.ashlux.tripreports.tripreports.client.vo.HappeningBean;
-import com.ashlux.tripreports.tripreports.server.factory.HappeningBeanFactory;
+import com.ashlux.tripreports.tripreports.server.business.happening.HappeningBeanFactory;
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
 
