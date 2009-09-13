@@ -11,7 +11,7 @@
 
   <modules>
     <module>wdw-trips-webapp</module>
-    <module>wdw-trips-jpa</module>
+    <module>wdw-trips-dao</module>
   </modules>
 
   <build>
