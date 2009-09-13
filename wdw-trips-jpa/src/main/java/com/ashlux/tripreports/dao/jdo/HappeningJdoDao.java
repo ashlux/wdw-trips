@@ -9,7 +9,7 @@ import javax.jdo.Query;
 import java.util.List;
 import java.util.Collection;
 
-public class HappeningJdoDao
+public class HappeningJdoDao    
     implements HappeningDao
 {
     @SuppressWarnings({"unchecked"})

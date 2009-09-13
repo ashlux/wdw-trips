@@ -14,8 +14,8 @@ public class TripReportsServiceImpl
     extends RemoteServiceServlet
     implements TripReportsService
 {
-    private HappeningBusiness happeningBusiness = new HappeningBusinessImpl();
-
+    private HappeningBusiness happeningBusiness;
+    
     @SuppressWarnings({"unchecked"})
     public List<HappeningBean> getPreviousHappenings()
     {
@@ -27,5 +27,10 @@ public class TripReportsServiceImpl
     {
         Happening happening = happeningBusiness.saveHappening( name, message );
         return HappeningBeanFactory.transform( happening );
+    }
+
+    public void setHappeningBusiness( HappeningBusiness happeningBusiness )
+    {
+        this.happeningBusiness = happeningBusiness;
     }
 }

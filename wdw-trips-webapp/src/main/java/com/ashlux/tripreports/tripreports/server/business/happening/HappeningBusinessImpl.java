@@ -10,7 +10,7 @@ import java.util.List;
 public class HappeningBusinessImpl
     implements HappeningBusiness
 {
-    private HappeningDao happeningDao = new HappeningJdoDao();
+    private HappeningDao happeningDao;
 
     public Happening saveHappening( String name, String details )
     {
@@ -26,5 +26,10 @@ public class HappeningBusinessImpl
     public List<Happening> getRecentHappenings( )
     {
         return happeningDao.getRecentHappenings( 0, 5 );
+    }
+
+    public void setHappeningDao( HappeningDao happeningDao )
+    {
+        this.happeningDao = happeningDao;
     }
 }
