@@ -3,6 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+  <import resource="classpath:com/ashlux/tripreports/dao/jdo/jdo-spring.xml"/>
+
   <bean id="urlMapping"
         class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
     <property name="urlMap">
@@ -28,9 +30,6 @@
   <bean id="happeningBusiness"
         class="com.ashlux.tripreports.tripreports.server.business.happening.HappeningBusinessImpl">
     <property name="happeningDao" ref="happeningJdoDao"/>
-  </bean>
-
-  <bean id="happeningJdoDao" class="com.ashlux.tripreports.dao.jdo.HappeningJdoDao">
   </bean>
 
 </beans>

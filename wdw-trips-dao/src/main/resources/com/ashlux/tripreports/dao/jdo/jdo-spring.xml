@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="happeningJdoDao" class="com.ashlux.tripreports.dao.jdo.HappeningJdoDao">
+    <property name="persistenceManagerFactory" ref="pmf"/>
+  </bean>
+
+  <bean id="pmf" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+    <property name="staticField" value="com.ashlux.tripreports.dao.jdo.PMF.INSTANCE"/>
+  </bean>
+
+</beans>

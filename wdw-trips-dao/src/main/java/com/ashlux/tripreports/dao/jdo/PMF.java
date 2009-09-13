@@ -6,7 +6,7 @@ import javax.jdo.JDOHelper;
 public final class PMF
 {
 
-    private static final PersistenceManagerFactory INSTANCE = JDOHelper.getPersistenceManagerFactory( "transactional" );
+    public static final PersistenceManagerFactory INSTANCE = JDOHelper.getPersistenceManagerFactory( "transactional" );
 
     public static PersistenceManagerFactory get()
     {
