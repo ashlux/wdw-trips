@@ -6,26 +6,12 @@
         <verticalScrollbar>true</verticalScrollbar>
       </controlProperties>
     </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::TabBar" x="37" y="148" w="744" h="405" measuredW="475" measuredH="100" zOrder="6" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Recent%20happenings%2C%20What%27s%20happening%3F%2C%20Your%20trips%2C%20Settings</text>
-        <verticalScrollbar>false</verticalScrollbar>
-        <selectedIndex>2</selectedIndex>
-        <tabVPosition>top</tabVPosition>
-        <tabHPosition>left</tabHPosition>
-      </controlProperties>
-    </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="30" y="87" w="-1" h="-1" measuredW="352" measuredH="56" zOrder="3" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>WDW%20Trip%20Reports</text>
-      </controlProperties>
-    </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::LinkBar" x="583" y="110" w="-1" h="-1" measuredW="207" measuredH="23" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::LinkBar" x="583" y="110" w="-1" h="-1" measuredW="207" measuredH="23" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>My%20Profile%2C%20Settings%2C%20Logout</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="664" y="87" w="121" h="23" measuredW="121" measuredH="23" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="664" y="87" w="121" h="23" measuredW="121" measuredH="23" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text>ashlux%20%28Ashley%20Lux%29</text>
       </controlProperties>
@@ -43,6 +29,55 @@
       <controlProperties>
         <text>WDW%20Trip%20Reports%0Ahttp%3A//www.wdwtripreports.com/</text>
         <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="30" y="87" w="-1" h="-1" measuredW="352" measuredH="56" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>WDW%20Trip%20Reports</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::Button" x="50" y="189" w="149" h="-1" measuredW="113" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Add%20a%20new%20trip</text>
+      </controlProperties>
+    </control>
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::FieldSet" x="50" y="232" w="718" h="116" measuredW="200" measuredH="170" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Christmas%202009</text>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::Label" x="62" y="256" w="-1" h="-1" measuredW="175" measuredH="23" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Beginning%3A%20December%201%2C%202009</text>
+      </controlProperties>
+    </control>
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::Label" x="252" y="255" w="-1" h="-1" measuredW="160" measuredH="23" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Ending%3A%20December%207%2C%202009</text>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::Label" x="62" y="279" w="694" h="23" measuredW="265" measuredH="23" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Summary%20text%20describing%20what%20was%20special.</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::Button" x="62" y="305" w="-1" h="-1" measuredW="96" measuredH="28" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>View%20details</text>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::TextInput" x="675" y="253" w="-1" h="-1" measuredW="81" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Edit%20details</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::TabBar" x="37" y="148" w="744" h="405" measuredW="475" measuredH="100" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Recent%20happenings%2C%20What%27s%20happening%3F%2C%20Your%20trips%2C%20Settings</text>
+        <verticalScrollbar>false</verticalScrollbar>
+        <selectedIndex>2</selectedIndex>
+        <tabVPosition>top</tabVPosition>
+        <tabHPosition>left</tabHPosition>
       </controlProperties>
     </control>
   </controls>
