@@ -9,13 +9,16 @@ import javax.jdo.Query;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.orm.jdo.support.JdoDaoSupport;
+
 public class AttractionsJdoDao
+    extends JdoDaoSupport
     implements AttractionsDao
 {
     @SuppressWarnings({"unchecked"})
     public List<Attraction> getAttractions( String park, boolean includeClosed )
     {
-        PersistenceManager persistenceManager = PMF.get().getPersistenceManager();
+        PersistenceManager persistenceManager = getPersistenceManager();
         Query attractionsQuery = persistenceManager.newQuery( Happening.class );
         attractionsQuery.setOrdering( "name ASC" );
         if ( !includeClosed )
@@ -24,14 +27,14 @@ public class AttractionsJdoDao
         }
         List<Attraction> attractions =
             (List<Attraction>) persistenceManager.detachCopyAll( (Collection) attractionsQuery.execute() );
-        persistenceManager.close();
+        releasePersistenceManager( persistenceManager );
         return attractions;
     }
 
     public void addAttraction( Attraction attraction )
     {
-        PersistenceManager persistenceManager = PMF.get().getPersistenceManager();
+        PersistenceManager persistenceManager = getPersistenceManager();
         persistenceManager.makePersistent( attraction );
-        persistenceManager.close();
+        releasePersistenceManager( persistenceManager );
     }
 }

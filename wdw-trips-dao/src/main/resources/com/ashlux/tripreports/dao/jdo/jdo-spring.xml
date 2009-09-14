@@ -7,8 +7,13 @@
     <property name="persistenceManagerFactory" ref="pmf"/>
   </bean>
 
-  <bean id="pmf" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
-    <property name="staticField" value="com.ashlux.tripreports.dao.jdo.PMF.INSTANCE"/>
+  <bean id="attractionsJdoDao" class="com.ashlux.tripreports.dao.jdo.AttractionsJdoDao">
+    <property name="persistenceManagerFactory" ref="pmf"/>
   </bean>
+
+ <bean id="pmf"
+  class="org.springframework.orm.jdo.LocalPersistenceManagerFactoryBean">
+  <property name="persistenceManagerFactoryName" value="transactional" />
+ </bean>
 
 </beans>
