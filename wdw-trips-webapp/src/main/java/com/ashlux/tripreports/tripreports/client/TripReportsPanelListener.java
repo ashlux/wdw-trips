@@ -1,7 +1,7 @@
 package com.ashlux.tripreports.tripreports.client;
 
+import com.ashlux.tripreports.tripreports.client.panels.TripReportsPanel;
 import com.gwtext.client.widgets.Panel;
-import com.gwtext.client.widgets.Window;
 import com.gwtext.client.widgets.event.PanelListenerAdapter;
 
 public class TripReportsPanelListener

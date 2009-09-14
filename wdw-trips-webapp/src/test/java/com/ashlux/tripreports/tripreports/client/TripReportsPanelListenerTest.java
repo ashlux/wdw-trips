@@ -1,5 +1,6 @@
 package com.ashlux.tripreports.tripreports.client;
 
+import com.ashlux.tripreports.tripreports.client.panels.TripReportsPanel;
 import com.gwtext.client.widgets.Panel;
 
 public class TripReportsPanelListenerTest
@@ -49,6 +50,11 @@ public class TripReportsPanelListenerTest
         extends TripReportsPanel
     {
         Panel viewPanel;
+
+        public String getName()
+        {
+            return "PANEL NAME";
+        }
 
         public Panel getViewPanel()
         {
