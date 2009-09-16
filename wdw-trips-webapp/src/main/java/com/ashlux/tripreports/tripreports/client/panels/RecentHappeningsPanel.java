@@ -8,12 +8,16 @@ import com.gwtext.client.widgets.Panel;
 import com.gwtext.client.widgets.layout.AnchorLayout;
 import com.gwtext.client.widgets.layout.RowLayout;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class RecentHappeningsPanel
     extends TripReportsPanel
 {
     private final String NAME = "Recent happenings";
+
+    final Panel yourTripsPanel = new Panel();
 
     public String getName()
     {
@@ -22,7 +26,6 @@ public class RecentHappeningsPanel
 
     public Panel getViewPanel()
     {
-        final Panel yourTripsPanel = new Panel();
         yourTripsPanel.setLayout( new RowLayout() );
         yourTripsPanel.setBorder( false );
         yourTripsPanel.setLayout( new AnchorLayout() );
@@ -37,14 +40,27 @@ public class RecentHappeningsPanel
 
             public void onSuccess( List<HappeningBean> happeningBeans )
             {
-                for ( HappeningBean happeningBean : happeningBeans )
-                {
-                    addHappeningToPanel( happeningBean, yourTripsPanel );
-                }
+                displayHappenings( happeningBeans, yourTripsPanel );
             }
         } );
 
         return yourTripsPanel;
+    }
+
+    private void displayHappenings( List<HappeningBean> happeningBeans, Panel panel )
+    {
+        Collections.sort( happeningBeans, new Comparator<HappeningBean>()
+        {
+            public int compare( HappeningBean happeningBean, HappeningBean happeningBean1 )
+            {
+                return happeningBean.getDate().compareTo( happeningBean1.getDate() );
+            }
+        } );
+
+        for ( int c = happeningBeans.size(); c >= 0; ++c )
+        {
+            addHappeningToPanel( happeningBeans.get( c ), panel );
+        }
     }
 
     private void addHappeningToPanel( HappeningBean happeningBean, Panel panel )
@@ -59,7 +75,7 @@ public class RecentHappeningsPanel
         spacingPanel.setBorder( false );
         spacingPanel.setHeight( 20 );
 
-        panel.add( happeningPanel );
-        panel.add( spacingPanel );
+        panel.insert( 0, happeningPanel );
+        panel.insert( 0, spacingPanel );
     }
 }
