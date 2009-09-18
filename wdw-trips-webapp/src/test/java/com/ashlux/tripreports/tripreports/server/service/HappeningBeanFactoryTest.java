@@ -39,6 +39,8 @@ public class HappeningBeanFactoryTest
         happening2.setName( "Ash Lux2" );
         happening2.setDetails( "These are details2." );
         List<Happening> happenings = new LinkedList<Happening>();
+        happenings.add( happening );
+        happenings.add( happening2 );
 
         List<HappeningBean> happeningBeans = HappeningBeanFactory.transform( happenings );
 

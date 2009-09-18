@@ -8,7 +8,6 @@ public class TripReportsPanelListenerTest
 {
     public void testOnActivate_unexpectedPanel()
     {
-        fail();
         try
         {
             Panel panel = new Panel();
