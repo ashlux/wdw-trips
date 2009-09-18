@@ -3,6 +3,7 @@ package com.ashlux.tripreports.tripreports.client;
 import com.ashlux.tripreports.tripreports.client.panels.RecentHappeningsPanel;
 import com.ashlux.tripreports.tripreports.client.panels.WhatsHappeningPanel;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.gwtext.client.core.Position;
 import com.gwtext.client.widgets.Panel;
 import com.gwtext.client.widgets.TabPanel;

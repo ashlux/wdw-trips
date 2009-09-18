@@ -16,7 +16,7 @@
   <packaging>jar</packaging>
 
   <build>
-    <plugins>
+    <plugins>                                          
       <plugin>
         <groupId>org.datanucleus</groupId>
         <artifactId>maven-datanucleus-plugin</artifactId>

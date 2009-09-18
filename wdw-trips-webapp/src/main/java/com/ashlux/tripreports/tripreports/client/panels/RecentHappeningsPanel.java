@@ -57,7 +57,7 @@ public class RecentHappeningsPanel
             }
         } );
 
-        for ( int c = happeningBeans.size(); c >= 0; ++c )
+        for ( int c = happeningBeans.size() - 1; c >= 0; --c )
         {
             addHappeningToPanel( happeningBeans.get( c ), panel );
         }
